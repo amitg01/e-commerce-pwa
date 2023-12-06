@@ -1,19 +1,36 @@
-import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
 
 const SignIn = () => {
-  // const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    // Handle sign up logic here
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    auth.signin(user);
+    navigate("/");
   };
+
+  useEffect(() => {
+    if (auth.user) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <section className="bg-white">
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center px-6">
-        <form className="w-full max-w-md">
+        <form className="w-full max-w-md" onSubmit={handleSubmit}>
           <div className="mx-auto flex justify-center">
             <img
               className="h-7 w-auto sm:h-8"

@@ -1,14 +1,31 @@
-import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/auth";
 
 const SignUp = () => {
-  // const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = () => {
-    // Handle sign up logic here
+  const auth = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const user = {
+      email,
+      password,
+    };
+    auth.signin(user);
+    navigate("/");
   };
+
+  useEffect(() => {
+    if (auth.user) {
+      navigate("/");
+    }
+  }, []);
 
   return (
     <section className="bg-white">

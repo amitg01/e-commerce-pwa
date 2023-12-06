@@ -6,7 +6,7 @@ import SignIn from "./pages/SignIn";
 import ProductList from "./pages/ProductList";
 import DashOutlet from "./components/DashOutlet";
 import ProfileOutlet from "./components/ProfileOutlet";
-// import ProductPage from "./pages/ProductPage";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   return (
@@ -15,12 +15,11 @@ function App() {
         <Route index element={<ProductList />} />
         <Route path="products">
           <Route index element={<ProductList />} />
-          <Route path=":productId" element={<p>Product page</p>} />
+          <Route path=":productId" element={<ProductPage />} />
         </Route>
         <Route path="me" element={<ProfileOutlet />}>
           <Route index element={<p>Me</p>} />
-          <Route path="orders" element={<p>Orders</p>} />
-          <Route path="cart" element={<p>Cart</p>} />
+          <Route path="settings" element={<p>Settings</p>} />
         </Route>
       </Route>
       <Route path="signup" element={<SignUp />} />

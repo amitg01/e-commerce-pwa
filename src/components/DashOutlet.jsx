@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
+import Navbar from "./Navbar";
 const DashOutlet = () => {
   return (
     <div>
-      <nav>Hello</nav>
+      <Navbar />
       <Outlet />
     </div>
   );
