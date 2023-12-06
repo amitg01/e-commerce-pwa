@@ -15,7 +15,13 @@ const SignUp = () => {
       <div className="container mx-auto flex min-h-screen flex-col items-center justify-center px-6">
         <form className="w-full max-w-md">
           <div className="mx-auto flex justify-center">
-            <img className="h-7 w-auto sm:h-8" src={""} alt="" />
+            <img
+              className="h-7 w-auto sm:h-8"
+              src={
+                "https://gravatar.com/avatar/07118d0221d3e1f533e1ec77098e3676?s=400&d=robohash&r=x"
+              }
+              alt=""
+            />
           </div>
           <div className=" mt-6 flex items-center justify-center">
             <div className="w-1/3 font-medium text-center text-gray-800 border-b border-gray-400">
